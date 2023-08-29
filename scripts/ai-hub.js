@@ -77,13 +77,13 @@ const modalDetails = async(Id) => {
     const detailDiv = document.createElement('div');
     detailDiv.innerHTML = `
     <h1 class="text-2xl font-semibold">${details.description}</h1>
-    <div class="flex gap-4 justify-between mt-4">
+    <div class="flex gap-4 justify-center mt-4">
     <div class="bg-white rounded-sm text-center text-green-400 p-3"><p>${details.pricing[0].plan}</p><p>${details.pricing[0].price}</p></div>
     <div class="bg-white rounded-sm text-center text-yellow-400 p-3"><p>${details.pricing[1].plan}</p><p>${details.pricing[0].price}</p></div>
     <div class="bg-white rounded-sm text-center text-red-400 p-3"><p>${details.pricing[2].plan}</p><p>${details.pricing[0].price}</p></div>
     </div>
 
-    <div class="flex flex-col md:flex-row gap-4 justify-between">
+    <div class="flex flex-col md:flex-row gap-4 justify-center">
     <div>
     <h3 class="font-semibold mt-4">Features</h3>
     <ul class="list-disc text-xs p-4">
@@ -105,4 +105,18 @@ const modalDetails = async(Id) => {
 
     feature(Id+Id, details.integrations);
     // console.log(details.integrations[1]);
+
+    const showcaseDiv = document.createElement('div');
+    showcaseDiv.classList =`card bg-base-100`;
+    showcaseDiv.innerHTML = `
+    <figure class="px-10 pt-10 relative">
+        <img src="${details.image_link[0]}" alt="Shoes" class="rounded-xl" />
+    </figure>
+    <p class="btn btn-sm bg-[#EB5757] text-white text-xs w-32 absolute right-0">${details?.accuracy.score*100}% accuracy</p>
+    <div class="card-body items-center text-center">
+        <h2 class="card-title">${details.input_output_examples[0].input}</h2>
+        <p>${details.input_output_examples[0].output}</p>
+    </div>
+    `
+    aiShowCase.appendChild(showcaseDiv);
 }
